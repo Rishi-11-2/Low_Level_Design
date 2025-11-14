@@ -1,0 +1,8 @@
+we need decorator design pattern to prevent class explosion
+
+
+Decorator is both is-a and has-a  to the baseclass
+
+it is has-a because it will have an instance of the baseclass
+
+it is is-a because it is itself an instance of the baseclass
