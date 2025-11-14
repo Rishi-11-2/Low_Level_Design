@@ -1,0 +1,5 @@
+so there are two objects
+
+observer and observable 
+
+any change in the state of observable will be notified to the observer(which can be more than one)

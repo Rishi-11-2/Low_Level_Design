@@ -1,0 +1,45 @@
+1.
+Single Responsibility Principle(SRP) : 
+A class should have only one reason to change meaning it should have only one responsibility
+
+Example : A user should only handle user-related logic, while database -related operations should be handled by a seperate UserRepository class
+
+
+Easy to Maintain 
+Easy to Understand
+2.
+
+Open/ Close  Principle
+
+Software entities(classes,modules, functions) should be open for extension but closed for modification
+
+Example : Adding new functionality to a system using inheritance or composition without modifying the existing code
+
+
+3.
+
+Liskov Substitution  Principle suggests states that objects of a superclass should be replaceable with objects of a subclass without altering the correctness of the program . 
+It ensures that the subclass can stand in for its parent class and function correctly in any context that expects the parent class
+
+
+In other words:
+
+if Class B is a subtype of Class A , then we should be able to replace object of A with B without breaking the behaviour of the program
+
+
+Subclass should extend the capability of parent class ,not narrow it down
+
+4.
+
+Interface Segmentation
+
+Interface should be such that , client should not implement unnecessary functions they do not need .
+
+Many small specific interface rather than one big fat interface
+
+
+5.
+
+Dependency Inversion Principle
+
+Class should depend on interfaces rather than on concrete classes
