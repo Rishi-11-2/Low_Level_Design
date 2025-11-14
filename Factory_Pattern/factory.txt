@@ -1,0 +1,7 @@
+
+
+whenever we need to generate objects on conditional pattern we need Factory pattern
+
+
+
+Abstract Factory pattern is : Factory of factories
