@@ -1,0 +1,10 @@
+
+
+
+objects: 
+
+Piece
+
+board
+
+Player
