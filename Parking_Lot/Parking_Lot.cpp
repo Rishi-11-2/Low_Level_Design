@@ -146,6 +146,12 @@ class ParkingSpotManager { // it has-a relationship with ParkingSpots
 
     virtual ParkingSpot* findAndBookPS() = 0;
 
+    void removeVehicle(ParkingSpot* spot)
+    {
+        spot->remove();
+        ps.insert(spot)
+    }
+
 
 
 };
@@ -153,7 +159,9 @@ class ParkingSpotManager { // it has-a relationship with ParkingSpots
 class TwoWheelerManager : public ParkingSpotManager{
     public:
     ParkingStrategy* ParkingStrategy;
-    TwoWheelerManager(set<ParkingSpot*>&ps,ParkingStrategy* strategy):ParkingSpotManager(ps) , ParkingStrategy(strategy){}
+    TwoWheelerManager(set<ParkingSpot*>&ps):ParkingSpotManager(ps){
+        ParkingStrategy = new NearToEntranceStrategy();
+    }
 
     ParkingSpot* findAndBookPS(Vehicle* v)
     {
@@ -168,7 +176,9 @@ class TwoWheelerManager : public ParkingSpotManager{
 class FourWheelerManager : public ParkingSpotManager{
     public:
     ParkingStrategy* ParkingStrategy;
-    FourWheelerManager(set<ParkingSpot*>&ps,ParkingStrategy* strategy):ParkingSpotManager(ps),ParkingStrategy(strategy){}
+    FourWheelerManager(set<ParkingSpot*>&ps):ParkingSpotManager(ps){
+        ParkingStrategy = new NearToEntranceAndElevatorStrategy();
+    }
 
     ParkingSpot* findAndBookPS(Vehicle* v)
     {
@@ -196,7 +206,7 @@ class ParkingManagerFactory{
     map<VehicleType,ParkingSpotManager*>registry;
     public:
 
-    ParkingSpotManager* getManager(VehicleType type, set<ParkingSpot*>&ps,ParkingStrategy* strategy){
+    ParkingSpotManager* getManager(VehicleType type, set<ParkingSpot*>&ps){
 
         if(registry.count(type))
         return registry[type];
@@ -234,8 +244,8 @@ class EntranceGate{
     ParkingSpotManager* manager ;   // not owned 
 
     public:
-    EntranceGate(ParkingManagerFactory* factory,VehicleType type,set<ParkingSpot>&ps,ParkingStrategy* strategy): factory(factory){
-        manager = factory->getManager(type,ps,strategy);
+    EntranceGate(ParkingManagerFactory* factory,VehicleType type,set<ParkingSpot>&ps): factory(factory){
+        manager = factory->getManager(type,ps);
     }
 
     ParkingSpot* admitVehicle(Vehicle* v)
@@ -388,5 +398,7 @@ class ExitGate{
         auto v = ticket->v;
         auto ps = ticket->v;
 
+        ParkingSpotManager* manager = factory->getManager(v->type,ps);
+        manager->removeVehicle(ps);
     }
 };
