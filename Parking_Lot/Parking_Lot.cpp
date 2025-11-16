@@ -142,6 +142,7 @@ class ParkingSpotManager { // it has-a relationship with ParkingSpots
     set<ParkingSpot*>ps;
 
     public:
+    ParkingStrategy* ParkingStrategy;
     ParkingSpotManager(set<ParkingSpot*>ps): ps(ps){}
 
     virtual ParkingSpot* findAndBookPS() = 0;
@@ -157,8 +158,8 @@ class ParkingSpotManager { // it has-a relationship with ParkingSpots
 };
 
 class TwoWheelerManager : public ParkingSpotManager{
+
     public:
-    ParkingStrategy* ParkingStrategy;
     TwoWheelerManager(set<ParkingSpot*>&ps):ParkingSpotManager(ps){
         ParkingStrategy = new NearToEntranceStrategy();
     }
@@ -175,7 +176,6 @@ class TwoWheelerManager : public ParkingSpotManager{
 
 class FourWheelerManager : public ParkingSpotManager{
     public:
-    ParkingStrategy* ParkingStrategy;
     FourWheelerManager(set<ParkingSpot*>&ps):ParkingSpotManager(ps){
         ParkingStrategy = new NearToEntranceAndElevatorStrategy();
     }
@@ -402,3 +402,5 @@ class ExitGate{
         manager->removeVehicle(ps);
     }
 };
+
+// to increase the number of entrance , we would need EntranceGateManager
