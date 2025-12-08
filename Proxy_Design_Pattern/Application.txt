@@ -1,0 +1,5 @@
+1.  Access Restriction ( user --> Proxy --> Internet)
+
+2.   Caching
+
+3.   Preprocessing & Postprocessing

@@ -14,7 +14,10 @@ class LogProcressor{
         DEBUG = 2 ,
         ERROR = 3
     };
-
+// using explicit keyword prevents implicit conversion
+// LogProcessor p = nullptr;   // implicit conversion — constructor is invoked silently
+// with explicit the above operation will be forbidden
+// so we have to use like this : LogProcessor p(nullptr);   // allowed
    explicit LogProcressor(LogProcressor* loggerProcessor): nextLoggerProcessor(loggerProcessor){}
 
 
