@@ -1,0 +1,13 @@
+
+
+how to avoid null checks ?
+how to avoid null pointer exception when its being thrown?
+
+
+so we basically replaces NULL values with NULL objects 
+
+NULL OBJECT DESIGN PATTERN : 
+
+-- A null object replaces  NULL return type
+-- no need to put if check for checking NULL
+-- NULL OBJECT reflects do nothing or Default behaviour
