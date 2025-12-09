@@ -1,0 +1,6 @@
+In different states of vending machine , different operations are allowed
+
+So this is the question of state design 
+
+
+Design TV(just like vending machine) is a question of State Design Pattern
