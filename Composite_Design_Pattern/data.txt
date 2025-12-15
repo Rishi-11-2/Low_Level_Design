@@ -1,0 +1,11 @@
+Composite Design pattern : objects inside objects 
+
+   a Tree - like pattern, whichever problem statement is creating a tree-like structure, its a 
+   Composite Design pattern question 
+
+
+
+Problem statement: File System Design  :
+
+
+In file System we can either have a directory or a file . Inside the directory we can again have another directory or file .
