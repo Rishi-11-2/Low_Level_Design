@@ -1,0 +1,38 @@
+Adapter Design pattern is a bridge between expected interface and existing interface.
+
+It falls into the structural Design pattern
+
+ 
+                    Bridge
+Expected Interface <--------> Existing Interface
+
+
+
+Client. ----> Adapter Interface
+                  |
+                  |
+                  |
+                  |
+                  |
+                  |. is-a relationship 
+                  V
+                             has-a relationship
+                  Concrete  -----------------------> Existing Interface(Adaptee)
+                  Adapter                   
+
+
+
+
+Example
+
+Power Adapter and socket 
+
+XML to JSON parser :
+
+Client(wants JSON). <--- Adapter(Converts XML to JSON) <--- (Server)Returns XML
+
+
+
+Question : How will you take care of the usecase in which the response from the server is in a different format than what we expected?
+
+we will use Adapter Design Pattern 
