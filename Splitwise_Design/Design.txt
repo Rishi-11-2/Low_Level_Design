@@ -1,0 +1,56 @@
+
+
+Requirement Gathering:
+
+Happy Flow:
+
+1. Add my friends(F1,F2,F3)
+
+2. Create N groups(G1,G2,G3)
+
+3. Add friends to a particular groups
+
+4. Add an expense to a particular group
+
+5. add an expense not attached to any particular group
+
+6. split an expense between friends
+
+
+Step 1 :Requirement:
+
+1. add a friend
+2. manage groups
+3. Add/manage friend inside a group
+4. manage expenses inside a group or without a group
+5. Should be able to split the expense
+6. Equal Split, Percentage-Wise Split,Unequal Split 
+7. Balance sheet of each user 
+
+
+
+Step 2: OBJECT Identification
+
+
+1. Splitwise
+2. user
+3. group
+4. Expense
+5. Split(??)
+6. BalanceSheet(??)
+
+
+What happens when expense is created ?
+
+Example:
+Title : Lunch
+Paid By: Rishi
+
+Amount: 400
+Split : Equally
+So each friend and the amount(or Percentage) they owe for each payment 
+
+
+
+
+
