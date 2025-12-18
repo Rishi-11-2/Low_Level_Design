@@ -1,0 +1,19 @@
+Builder Desing Pattern is a creational design Pattern.
+
+
+
+Problem : Suppose we have a class with a huge number of optional paramters.
+
+So the number of constructors of such a class would be huge 
+when there are lot of optional fields
+
+
+
+Builder Design Pattern: Step - by - Step object creation process 
+
+
+
+
+Builder Vs Decorator Design Pattern
+
+Creational(Help us in creating objects) Vs Structural(Help us in making complex structures)
