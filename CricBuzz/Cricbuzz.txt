@@ -1,0 +1,29 @@
+1 .Requirement Gathering : 
+
+Match1  , Match 2 
+
+
+Match ---> Scorecard( which will be updated ball by ball )
+
+
+                   |--> Inning 1 ---> 50 overs(Team 1 will bat, Team 2 will bowl)
+2 Team --> Match --|
+                   |--> Inning 2 ---> 50 overs(Team1 will bat, Team 2 will bowl)
+
+
+
+For each Player ---> Score
+
+
+
+2. Objects:
+
+Match
+Team
+Players
+Innings
+Overs 
+bowl
+Scorecard
+
+
