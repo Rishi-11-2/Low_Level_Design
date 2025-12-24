@@ -1,0 +1,66 @@
+
+Facade Design Pattern: we use when we need to hide system complexities  from the client .  
+
+
+client --->  [accelerate()] ----------------> (Increased complexities  but abstracted away from the client )
+
+
+
+
+
+Client ---> Facade Layer ----> System
+
+
+
+
+DAO : Data Access Object 
+
+
+
+
+
+
+
+Payment System :
+
+
+suppose we have a subsystem in which there are four components : Payment, Invoice, Product and Notification
+
+
+Now Client want to process order which is 4-step process:
+
+1. Get Product
+2. Make Payment
+3. Generate Invoice
+4. Send Notification
+
+now if client interact directly with the subsytem , there would be disadvantages:
+1. if the any logic of the payment  changes then we would have to make changes in business logic in client code .
+
+thats why we can bring a Facade Layer 
+
+
+
+
+Scenario :
+
+
+Facade using other Facade
+
+                  
+                  |---------------> Payment Facade
+                  |
+Client ------>. CheckoutFacade  ------> Order Facade  
+                  |
+                  |
+                  |
+                  |
+                  V
+                A Complex System
+
+
+
+
+Facade vs.   Proxy :
+
+
