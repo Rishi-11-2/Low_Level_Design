@@ -1,0 +1,13 @@
+
+
+
+Bridge Design Pattern : Bridge Design Pattern decouples an abstraction from implementation so that two can vary independently
+
+
+      Abstractor ----------------------> Implementor
+         |                                  | 
+         |                                  |
+         |                                  |
+         |                                  |
+         VV                                 VV
+       Refined Abstraction                Concrete Implementor
