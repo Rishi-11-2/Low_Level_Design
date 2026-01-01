@@ -1,0 +1,16 @@
+Prototype Design pattern is used when we have to make copy/clone from the existing object 
+
+
+
+
+                client
+                 |
+                 |
+                 |
+                 V
+             Prototype Interface (clone())
+              |         |
+              |         |
+              |         |
+              V         V
+             class1    class2 (clone)
