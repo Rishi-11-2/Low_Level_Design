@@ -1,0 +1,1 @@
+it is used only when we want to create one instance of the class
