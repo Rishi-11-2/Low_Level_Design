@@ -1,0 +1,23 @@
+
+
+Happy Flow:
+
+
+1. view product / catalog
+2. Add product to the cart
+3. Place order --> invoice
+4. Checkout and make payment 
+
+
+
+Objects:
+
+1. product
+2. order
+3. cart
+4. invoice
+5. payment
+6. warehouse
+7. user
+8. inventory
+
