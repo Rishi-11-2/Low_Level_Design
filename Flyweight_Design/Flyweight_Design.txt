@@ -1,0 +1,8 @@
+Two important interview questions:
+
+1. Design Game 
+2. Design Word Processor(Text editor)
+
+
+Definition : it is one of the structural design pattern . This pattern help reduce the memory usage by sharing data
+among multiple objects. 
