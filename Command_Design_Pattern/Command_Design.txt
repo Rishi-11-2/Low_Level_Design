@@ -1,0 +1,20 @@
+Pattern Category : behavioral Pattern
+
+
+
+client
+  |
+  |
+  |
+  |
+  |
+  V
+Invoker     ------->      CommandInterface 
+                               |
+                               |
+                               |
+                            ___|
+                           |
+                           |
+                           V
+                    Concrete Command1 -----------------------------> Receiver   
