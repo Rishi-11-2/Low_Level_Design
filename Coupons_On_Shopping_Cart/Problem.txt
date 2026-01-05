@@ -1,0 +1,28 @@
+given shopping cart with products and coupons , calculate net price after applying coupons on the products
+
+coupons can be of different types with certain conditions 
+
+1. N% off that is 10% off for all the individual
+2. p% off on the next item 
+3. D% off on the Nth item of type T 
+
+Sequentially wants to apply all the coupon on the cart and get the total amount 
+
+
+
+
+Objects:
+
+shopping cart
+coupon 
+product 
+
+
+for each Product , multiple different coupons can be applied at a time
+
+
+Product 1 : coupon 1, coupon 2, coupon 8
+Product 2 : coupon 3, coupon4 , coupon6
+
+
+VERY SIMILAR TO DECORATOR PATTERN 
