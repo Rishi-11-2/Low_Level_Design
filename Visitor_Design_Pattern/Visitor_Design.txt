@@ -1,0 +1,14 @@
+Visitor design pattern allow us to add new operation to the existing classes without changing their
+structure
+
+
+It achieves this by seperating the operation from the objects on which it operates.
+
+It does Double dispatch to achieve this
+
+Double dispatch means the method which needs to be invoked decided by the caller object and the object passed in the argument
+
+
+different from strategy pattern:
+
+strategy pattern seperates out the algorithm (not the operation)
