@@ -1,0 +1,9 @@
+MVC Design : Model , View , Controller
+
+
+
+In Controller, all business logic is there ,REST APIs, Caching 
+
+IN Model , Entities, DB Query logic is there 
+
+View : Frontend 
