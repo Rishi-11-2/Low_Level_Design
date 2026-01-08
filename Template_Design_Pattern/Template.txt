@@ -1,0 +1,6 @@
+Pattern category : behavioral Pattern
+
+
+when you want all the classes to follow the specific steps to process the task
+but also
+Need to provide the flexibility that each class have their own logic in that specific steps 
