@@ -1,0 +1,6 @@
+Pattern category : Behavioral category (Snapshot design Pattern)
+
+
+Provides an ability to revert an object to  a previous state i.e. undo capability 
+
+it does not expose the internal object implementation
