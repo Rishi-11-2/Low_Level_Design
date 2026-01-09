@@ -1,0 +1,7 @@
+Pattern category : it is behavioral Pattern
+
+
+
+Components Involved---> context , Abstract Expression
+
+Abstract Expression ---> Terminal Expression, non-Terminal Expression
