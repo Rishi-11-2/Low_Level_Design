@@ -1,0 +1,27 @@
+
+
+Requirement clarifications:
+
+
+How many dice we should assume?
+
+for now one but should be scalable
+
+How many snakes and ladder do we want in our game?
+Setup time: we should be able to dynamically define 
+
+
+what should be the winning condition ?
+Any one wins game finishes. This is business logic, we can change it anytime depending on the usecase
+
+Object identification:
+
+1. Dice 
+2. Snake
+3. Ladder
+4. Board
+5. Players
+6. Cells
+
+
+
