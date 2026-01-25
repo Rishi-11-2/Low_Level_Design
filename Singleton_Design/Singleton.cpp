@@ -17,8 +17,8 @@ public:
 class DBConnectionPool {
 
 private:
-    std::vector<DBConnection*> freeConnectionsPool;
-    std::unordered_set<DBConnection*> connectionsCurrentlyInUse;
+    vector<DBConnection*> freeConnectionsPool;
+    unordered_set<DBConnection*> connectionsCurrentlyInUse;
     int INITIAL_POOL_SIZE;
     int MAX_POOL_SIZE;
     DBConnectionPool(int INITIAL_POOL_SIZE, int MAX_POOL_SIZE)
