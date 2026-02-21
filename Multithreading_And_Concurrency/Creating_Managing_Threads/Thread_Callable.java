@@ -64,7 +64,7 @@ public class Thread_Callable {
         try {
             smsThread.join();
             emailThread.join();
-            String eta = etaThreadRunnable.get();
+            String eta = etaThreadRunnable.get(); // waiting for etaThread to complete
             System.out.println(eta);
             System.out.println("All tasks completed.");
         } catch (Exception e) {
