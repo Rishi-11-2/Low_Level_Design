@@ -7,7 +7,8 @@ class Lazy_Loading{
     {
 
     }
-    private static class Holder{ // when outer class is loaded
+    private static class Holder{ // when outer class is loaded, this class is not loaded into memory
+        // object of the Lazy_Loading instance is created only when its required
 
         private static final  Lazy_Loading instance = new Lazy_Loading();
     }
