@@ -126,7 +126,7 @@ class RemoteControl {
 }
 
 // ========= Client code ===========
-public class Main {
+public class Command_Design {
     public static void main(String[] args) {
         Light light = new Light();
         AC ac = new AC();

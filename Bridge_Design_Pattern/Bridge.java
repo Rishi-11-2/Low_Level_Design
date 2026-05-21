@@ -41,7 +41,7 @@ class CachedVideoDownloader implements VideoDownloader {
 
 
 // ================ Main Class ===================
-class Main {
+class Bridge {
     public static void main(String[] args) {
         VideoDownloader cacheVideoDownloader = new CachedVideoDownloader();
         System.out.println("User 1 tries to download the video.");
