@@ -93,7 +93,7 @@ class ResumeHistory {
 }
 
 // Main driver
-public class Memento {
+public class Memento_Design {
     public static void main(String[] args) {
         ResumeEditor editor = new ResumeEditor();
         ResumeHistory history = new ResumeHistory();
