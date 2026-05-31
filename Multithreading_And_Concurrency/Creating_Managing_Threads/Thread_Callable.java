@@ -1,55 +1,49 @@
 import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
-class SMSTask implements Runnable{
-    public void run()
-    {
-        try{
+
+class CallableSMSTask implements Runnable {
+    public void run() {
+        try {
             Thread.sleep(2000);
             System.out.println("SMS sent using runnable");
-        }
-        catch(InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-    }
-}
-class EmailTask implements Runnable{
-    public void run()
-    {
-        try{
-            Thread.sleep(3000);
-            System.out.println("EMAIl sent using runnable");
-        }
-        catch(InterruptedException e)
-        {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 }
 
-class ETATask implements Callable<String>{
-    public String call() throws Exception
-    {
-        
+class CallableEmailTask implements Runnable {
+    public void run() {
+        try {
+            Thread.sleep(3000);
+            System.out.println("EMAIL sent using runnable");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class CallableETATask implements Callable<String> {
+    public String call() throws Exception {
         Thread.sleep(5000);
         System.out.println("Eta calculated");
         return "ETA is : 25 minutes";
-        
     }
 }
+
 public class Thread_Callable {
-    public static void main(String args[])
-    {
-        SMSTask smsTask = new SMSTask();
-        EmailTask emailTask = new EmailTask();
+    public static void main(String args[]) {
+        CallableSMSTask smsTask = new CallableSMSTask();
+        CallableEmailTask emailTask = new CallableEmailTask();
 
         Thread smsThread = new Thread(smsTask);
         Thread emailThread = new Thread(emailTask);
 
-        FutureTask<String> etaThreadRunnable = new FutureTask<>(new ETATask()); //Future Task  implements RunnableFuture which extends Runnable , Future
+        FutureTask<String> etaThreadRunnable = new FutureTask<>(new CallableETATask());
         Thread etaThread = new Thread(etaThreadRunnable);
-                // Start all threads
+
+        // Start all threads
         smsThread.start();
         System.out.println("Task 1 ongoing...");
 
@@ -58,7 +52,6 @@ public class Thread_Callable {
 
         etaThread.start();
         System.out.println("Task 3 ongoing");
-
 
         // Wait for all threads to finish
         try {

@@ -63,7 +63,9 @@ public class TaskService {
             for (Task child : allChildren) {
                 // Delete from repository
                 System.out.println("[Composite Cascade] Deleting child subtask ID: " + child.getId());
+                taskRepository.delete(child.getId());
             }
+            taskRepository.delete(taskId);
             System.out.println("[TaskService] Task deleted successfully.");
         }
     }

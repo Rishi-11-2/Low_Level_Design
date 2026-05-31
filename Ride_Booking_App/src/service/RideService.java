@@ -180,6 +180,8 @@ public class RideService {
 
             if (ride.getStatus() == RideStatus.REQUESTED) {
                 // Not yet assigned, matching will continue to next driver
+                ride.addDeclinedDriver(driverId);
+                rideRepository.save(ride);
                 System.out.println("[RideService] Driver " + driverId +
                                    " declined unassigned ride " + rideId);
                 return;

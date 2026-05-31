@@ -104,8 +104,8 @@ public class MovementService {
 
         List<InternalRequest> internalRequests = internalRequestRepository.findPendingByElevator(elevatorId);
 
-        // Collect all distinct target floor numbers
-        Set<Integer> targetFloors = new HashSet<>();
+        // Collect all distinct target floor numbers, preserving order for FCFS
+        Set<Integer> targetFloors = new LinkedHashSet<>();
         for (ExternalRequest req : externalRequests) {
             targetFloors.add(req.getFloorNumber());
         }

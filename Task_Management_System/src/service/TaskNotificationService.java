@@ -39,36 +39,32 @@ public class TaskNotificationService {
         System.out.println("[TaskNotificationService] User ID " + userId + " unsubscribed from Task ID: " + taskId);
     }
 
+    public void syncObservers(Task task) {
+        List<TaskSubscription> subs = subscriptionRepository.findByTaskId(task.getId());
+        for (TaskSubscription sub : subs) {
+            if (sub.isActive()) {
+                User user = userRepository.findById(sub.getUserId());
+                if (user != null) {
+                    task.attach(new EmailSubscriber(user.getEmail()));
+                    task.attach(new MobileAppSubscriber("DEVICE-TOKEN-" + user.getUsername().toUpperCase()));
+                }
+            }
+        }
+    }
+
     public void notifySubscribers(Task task, ChangeType changeType, String oldValue, String newValue, int actorUserId) {
         // 1. Log in Audit Trail
         TaskChangeLog log = new TaskChangeLog(logIdCounter++, task.getId(), actorUserId, changeType, oldValue, newValue);
         changeLogRepository.save(log);
 
-        // 2. Fetch all subscribers
-        List<TaskSubscription> subs = subscriptionRepository.findByTaskId(task.getId());
+        // 2. Sync observers to Task model
+        syncObservers(task);
         
         System.out.println("\n>>> [Notification Engine] Broadcaster: Task ID " + task.getId() + " modified. Event: " + changeType);
         
-        // Notify each active subscriber using observers
-        for (TaskSubscription sub : subs) {
-            User user = userRepository.findById(sub.getUserId());
-            if (user != null) {
-                // Channel 1: Email Observer
-                EmailSubscriber emailObserver = new EmailSubscriber(user.getEmail());
-                task.attach(emailObserver);
-                
-                // Channel 2: Mobile Observer
-                MobileAppSubscriber mobileObserver = new MobileAppSubscriber("DEVICE-TOKEN-" + user.getUsername().toUpperCase());
-                task.attach(mobileObserver);
-                
-                // Trigger notify
-                task.notifySubscribers(changeType, oldValue, newValue);
-                
-                // Clean up observers
-                task.detach(emailObserver);
-                task.detach(mobileObserver);
-            }
-        }
+        // Trigger notify directly on the Task subject
+        task.notifySubscribers(changeType, oldValue, newValue);
+        
         System.out.println("<<< [Notification Engine] Broadcast complete.");
     }
 

@@ -34,6 +34,7 @@ public class Ride {
     private PaymentType paymentType;
     private String paymentId;
     private PaymentStatus paymentStatus;
+    private final java.util.Set<Integer> declinedDrivers = new java.util.concurrent.CopyOnWriteArraySet<>();
 
     private transient RideState currentState;
 
@@ -151,6 +152,9 @@ public class Ride {
 
     public PaymentStatus getPaymentStatus() { return paymentStatus; }
     public void setPaymentStatus(PaymentStatus paymentStatus) { this.paymentStatus = paymentStatus; }
+
+    public java.util.Set<Integer> getDeclinedDrivers() { return declinedDrivers; }
+    public void addDeclinedDriver(int driverId) { declinedDrivers.add(driverId); }
 
     @Override
     public String toString() {

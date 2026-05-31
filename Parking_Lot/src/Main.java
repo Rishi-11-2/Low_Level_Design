@@ -19,6 +19,7 @@ public class Main {
         TicketRepository ticketRepository = new TicketRepository();
         PricingRuleRepository pricingRuleRepository = new PricingRuleRepository();
         PaymentRepository paymentRepository = new PaymentRepository();
+        VehicleRepository vehicleRepository = new VehicleRepository();
 
         // 2. Initialize Services
         SlotService slotService = new SlotService(slotRepository);
@@ -30,9 +31,9 @@ public class Main {
 
         // 3. Initialize Controllers
         AdminController adminController = new AdminController(adminService);
-        EntryController entryController = new EntryController(slotService, ticketService);
+        EntryController entryController = new EntryController(slotService, ticketService, vehicleRepository);
         ExitController exitController = new ExitController(
-                ticketService, pricingService, paymentService, slotService, receiptService
+                ticketService, pricingService, paymentService, slotService, receiptService, vehicleRepository
         );
 
         // 4. Setup Parking Lot Infrastructure (Admin Flow)

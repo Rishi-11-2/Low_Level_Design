@@ -1,33 +1,26 @@
 import java.util.*;
 import java.util.concurrent.*;
 
-
-class PurchaseCounter{
-
+class MethodPurchaseCounter {
     private int counter = 0;
 
-   synchronized public void increment()
-    {
+    synchronized public void increment() {
         counter++;
     }
 
-    int getCounter()
-    {
+    int getCounter() {
         return counter;
     }
 }
+
 public class Synchronized_Method {
-    
-    public static void main(String args[]) throws Exception
-    {
-        PurchaseCounter counter = new PurchaseCounter();
+    public static void main(String args[]) throws Exception {
+        MethodPurchaseCounter counter = new MethodPurchaseCounter();
 
-        Runnable task = ()->{
-
-            for(int i = 1; i<=1000;i++)
+        Runnable task = () -> {
+            for (int i = 1; i <= 1000; i++)
                 counter.increment();
         };
-
 
         Thread t1 = new Thread(task);
         Thread t2 = new Thread(task);
@@ -37,7 +30,6 @@ public class Synchronized_Method {
         t1.join();
         t2.join();
 
-        System.out.println(counter.getCounter());
-
+        System.out.println("Synchronized method counter (should be 2000): " + counter.getCounter());
     }
 }

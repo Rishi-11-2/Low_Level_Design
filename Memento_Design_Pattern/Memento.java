@@ -34,7 +34,7 @@ class ResumeEditor {
 
     // Save the current state as a Memento
     public Memento save() {
-        return new Memento(name, education, experience, List.copyOf(skills));
+        return new Memento(name, education, experience, skills != null ? List.copyOf(skills) : Collections.emptyList());
     }
 
     // Restore state from Memento
@@ -93,7 +93,7 @@ class ResumeHistory {
 }
 
 // Main driver
-public class Memento_Design {
+public class Memento {
     public static void main(String[] args) {
         ResumeEditor editor = new ResumeEditor();
         ResumeHistory history = new ResumeHistory();

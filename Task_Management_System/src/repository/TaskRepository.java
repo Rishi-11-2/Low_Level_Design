@@ -64,4 +64,8 @@ public class TaskRepository {
 
         return stream.collect(Collectors.toList());
     }
+
+    public void delete(int taskId) {
+        taskMap.remove(taskId);
+    }
 }

@@ -147,6 +147,12 @@ public class MatchingService {
 
             if (currentRide == null) return false;
 
+            // Check if this driver declined the request
+            if (currentRide.getDeclinedDrivers().contains(driverId)) {
+                System.out.println("[Matching] Driver " + driverId + " declined the request. Aborting wait.");
+                return false;
+            }
+
             // Check if ride was cancelled
             if (currentRide.getStatus() == RideStatus.CANCELLED) {
                 return false;

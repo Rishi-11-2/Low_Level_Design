@@ -1,34 +1,33 @@
 import java.util.concurrent.*;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 // ───────────────────────── ExpiringReentrantLock ───────────────────────── 
 
 // Lock with a built-in “auto-release after N ms” timer
 class ExpiringReentrantLock {
-    // underlying mutual-exclusion lock
-    private final ReentrantLock lock = new ReentrantLock();
+    // Semaphore permits lock acquisition and can be released by the scheduler thread
+    private final Semaphore semaphore = new Semaphore(1);
 
     // single-thread scheduler to run the expiry task
     private final ScheduledExecutorService scheduler =
             Executors.newSingleThreadScheduledExecutor();
 
     // flag that tells the expiry task a timed lock is still active
-    private volatile boolean isLocked = false;
+    private final AtomicBoolean isLocked = new AtomicBoolean(false);
 
     // Tries to acquire immediately; if successful, schedules auto-unlock
     public boolean tryLockWithExpiry(long timeoutMillis) {
-
         // attempt immediate acquisition
-        boolean acquired = lock.tryLock();
+        boolean acquired = semaphore.tryAcquire();
         if (acquired) {
             // mark as held under the timer
-            isLocked = true;
+            isLocked.set(true);
 
             // schedule unlock after timeout
             scheduler.schedule(() -> {
-                if (lock.isHeldByCurrentThread() || isLocked) {
+                if (isLocked.compareAndSet(true, false)) {
                     System.out.println("Auto-releasing lock after timeout.");
-                    unlockSafely(); // delegate to common unlock logic
+                    semaphore.release();
                 }
             }, timeoutMillis, TimeUnit.MILLISECONDS);
         }
@@ -37,14 +36,9 @@ class ExpiringReentrantLock {
 
     // Releases the lock either by the owner thread or the timer
     public void unlockSafely() {
-        if (lock.isHeldByCurrentThread() || isLocked) {
-            isLocked = false; // reset timer flag
-
-            // only the owner may actually call unlock()
-            if (lock.isHeldByCurrentThread()) {
-                lock.unlock();
-                System.out.println("Lock released.");
-            }
+        if (isLocked.compareAndSet(true, false)) {
+            semaphore.release();
+            System.out.println("Lock released.");
         }
     }
 

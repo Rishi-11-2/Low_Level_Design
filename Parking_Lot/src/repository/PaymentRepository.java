@@ -21,6 +21,15 @@ public class PaymentRepository {
     public Optional<Payment> findByTicketId(UUID ticketId) {
         return paymentMap.values().stream()
                 .filter(p -> p.getTicketId().equals(ticketId))
+                .sorted((p1, p2) -> {
+                    if (p1.getStatus() == model.PaymentStatus.COMPLETED && p2.getStatus() != model.PaymentStatus.COMPLETED) {
+                        return -1;
+                    }
+                    if (p1.getStatus() != model.PaymentStatus.COMPLETED && p2.getStatus() == model.PaymentStatus.COMPLETED) {
+                        return 1;
+                    }
+                    return 0;
+                })
                 .findFirst();
     }
 }
